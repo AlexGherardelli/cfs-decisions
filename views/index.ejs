@@ -1,0 +1,31 @@
+<% include partials/header.ejs %>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 text-center">CFS Decisions</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <% decisions.forEach(function(decision){ %>
+  <div class="row">
+      <div class="col-md-12">
+          
+      
+      <h2><%= decision.session %> <%= decision.doc %> (paragraph: <%= decision.para %>)</h2>
+       <small class="text-muted"></small>
+       <p><%= decision.text %></p>
+       <small class="text-muted"><strong>Target: </strong><%= decision.target %> </small> <br/>
+       <small class="text-muted"><strong>Theme: </strong><%= decision.theme %> </small>
+       </div>
+  </div>
+  <hr>
+  <% }); %>
+  
+  
+</div>
+            
+
+
+<% include partials/footer.ejs %>
