@@ -1,63 +1,53 @@
 var express = require("express"),
     mongoose = require("mongoose"),
+    bodyParser = require("body-parser"),
+    Decision = require("./models/decision"),
     app = express();
     
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({extended: true})); // config body parser
 mongoose.connect("mongodb://localhost/decisions");
 
 
-var decisionSchema = new mongoose.Schema({
-    year: Number,
-    session: String,
-    doc: String, 
-    para: String, 
-    theme: [String],
-    target: [String], 
-    text: String
+app.get("/", function(req, res){
+    if(req.query.search){
+        var searchString = req.query.search;
+        Decision.find({$text: {$search: searchString}}, function(err, filteredDecisions){
+        if(err){
+            console.log(err)
+        } else{
+         res.render("index", {decisions: filteredDecisions})
+            }
+        })
+    }else{
+        Decision.find({}, function(err, foundDecisions){
+            if(err){
+                console.log(err);
+            }
+            else{
+                res.render("index", {decisions: foundDecisions})
+            }
+    });
+    }
+
 });
 
-var Decision = mongoose.model("Decision", decisionSchema);
-
-
-// var data = {
-//     session: "CFS 44",
-//     doc: "Final Report",
-//     para: "11 d",
-//     theme: ["SOFI"],
-//     target: ["Governments"],
-//     text: "Called on all stakeholders, including governments and the UN system, to accelerate efforts to address the root causes of such devastation and terrible suffering, with famine declared in South Sudan in 2017 and threatening in North-Eastern Nigeria, Somalia, and Yemen"
-// }
-
-// Decision.create(data, function(err, newlyCreated){
-//     if(err){
-//         console.log(err);
-//     }else{
-//         console.log(newlyCreated)
-//     }
-// }); 
-
-
-// Decision.remove({}, function(err) {
-//     if (!err) {
-//         console.log("Removed all data");
-//     }
-//     else {
-//       console.log(err);
-//     }
+// app.post("/", function(req, res){
+//     var searchString = req.body.search;
+//     console.log("Search string: ", searchString);
 // });
 
+// app.get("/search", function(req, res){
+//     Decision.find({$text: {$search: searchString}}, function(err, foundDecisions){
+//         if(err){
+//             console.log(err)
+//         } else{
+//             res.render("hello", {decisions: foundDecisions})
+//         }
+//     })
 
-app.get("/", function(req, res){
-    Decision.find({}, function(err, foundDecisions){
-        if(err){
-            console.log(err);
-        }
-        else{
-            res.render("index", {decisions: foundDecisions})
-        }
-    })
-});
+// })
 
 app.get("*", function(req, res){
     res.redirect("/")

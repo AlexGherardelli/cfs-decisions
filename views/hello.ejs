@@ -1,18 +1,8 @@
 <% include partials/header.ejs %>
 
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4 text-center">CFS Decisions</h1>
-<form class="input-group mb-3 mt-5" action="/" method="GET">
-  <input name="search" type="text" class="form-control" id="search" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  <div class="input-group-append">
-    <button class="btn btn-primary" type="submit">Submit</button>
-  </form>
-</div>
-    
-    
-  </div>
-</div>
+
+<h1>Found decisions</h1>
+
 <div class="container">
 
   <% decisions.forEach(function(decision){ %>
@@ -31,7 +21,4 @@
   
   
 </div>
-            
-
-
 <% include partials/footer.ejs %>
