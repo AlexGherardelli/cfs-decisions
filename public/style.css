@@ -11,6 +11,16 @@ h1, h2, h3, h4, h5, h6, a{
     font-weight: 700;
 }
 
-.display-4{
+a .display-3{
+    color: #333;
+}
+a:hover{
+    text-decoration: none;
+}
+.display-3{
     font-weight: 700;
+}
+
+.jumbotron{
+    background: url("/images/pattern.svg");
 }
