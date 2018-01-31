@@ -17,11 +17,11 @@ app.get("/", function(req, res){
         if(err){
             console.log(err)
         } else{
-         res.render("index", {decisions: filteredDecisions})
+         res.render("result", {decisions: filteredDecisions})
             }
         })
     }else{
-        Decision.find({}, function(err, foundDecisions){
+        Decision.find({year: 2017}).limit(10).exec(function(err, foundDecisions){
             if(err){
                 console.log(err);
             }
@@ -33,21 +33,7 @@ app.get("/", function(req, res){
 
 });
 
-// app.post("/", function(req, res){
-//     var searchString = req.body.search;
-//     console.log("Search string: ", searchString);
-// });
 
-// app.get("/search", function(req, res){
-//     Decision.find({$text: {$search: searchString}}, function(err, foundDecisions){
-//         if(err){
-//             console.log(err)
-//         } else{
-//             res.render("hello", {decisions: foundDecisions})
-//         }
-//     })
-
-// })
 
 app.get("*", function(req, res){
     res.redirect("/")

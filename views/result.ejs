@@ -1,0 +1,21 @@
+<% include partials/header.ejs %>
+
+<div class="container">
+    <h1  class="mt-5 mb-5">Decisions found: </h1>
+  <% decisions.forEach(function(decision){ %>
+  <div class="row">
+      <div class="col-md-12">
+          
+        <h3><%= decision.theme %> </h3>
+
+      <h4 class="text-muted"><%= decision.session %> (<%= decision.year %>) <%= decision.doc %> (paragraph: <%= decision.para %>)</h4>
+       <p><%= decision.text %></p>
+       <small class="text-muted"><strong>Target: </strong><%= decision.target %> </small> 
+       </div>
+  </div>
+  <hr>
+  <% }); %>
+</div>
+
+<% include partials/footer.ejs %>
+<% include partials/scripts.ejs %>

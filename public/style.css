@@ -1,26 +1,39 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,700');
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,500');
 
 html, body{
-    font-family: 'Open Sans', serif;
+    font-family: 'Rubik', serif;
     font-weight: 300;
     color: #333;
 }
 
-h1, h2, h3, h4, h5, h6, a{
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
 }
 
-a .display-3{
-    color: #333;
-}
 a:hover{
     text-decoration: none;
 }
 .display-3{
-    font-weight: 700;
+    color: #1a7aac;
+    font-weight: 500;
 }
 
 .jumbotron{
-    background: url("/images/pattern.svg");
+    min-height: 80vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-primary{
+    background: #1a7aac;
+}
+.form-control:focus{
+    border-color: #1a7aac;
+    box-shadow: 0 0 0 0.2rem rgba(26,122,172,.25);
+}
+.footer{
+    background: #333;
+    color: white;
 }
