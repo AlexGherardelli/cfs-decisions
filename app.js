@@ -20,18 +20,24 @@ app.get("/", function(req, res){
          res.render("result", {decisions: filteredDecisions})
             }
         })
-    }else{
-        Decision.find({year: 2017}).limit(10).exec(function(err, foundDecisions){
-            if(err){
-                console.log(err);
-            }
-            else{
-                res.render("index", {decisions: foundDecisions})
-            }
-    });
+    }
+    else{
+        res.render("index");
+        // Decision.find({year: 2017}).limit(10).exec(function(err, foundDecisions){
+        //     if(err){
+        //         console.log(err);
+        //     }
+        //     else{
+                
+        //     }
+    // });
     }
 
 });
+
+app.get("/new", function(req, res){
+    res.render("new");
+})
 
 
 
