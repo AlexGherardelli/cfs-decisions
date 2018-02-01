@@ -22,15 +22,18 @@ In Excel this can be done with the following formula:
 This can be done with the forumula
 
 ```
-=TRIM(RIGHT([@text], LEN([@text]) - 3))
+=LEFT(A1,(FIND(" ",A1,1)-1))
 
 ```
 
-where:
-` TRIM() `: removes trailing spaces at the beginning 
-`RIGHT([@text], LEN([@text]) - 3))`: removes the first three characters on the left (`[@text]` can be substituted with any cell number or column)
+This formula finds the first occurrence of space and removes eveything before it, effectively removing bullet points of any kind. Some paragraphs have an additional `ont)` to be removed: use the native find and replace to remove all occurrences.
 
-Some paragraphs have an additional `ont)` to be removed: use the native find and replace to remove all occurrences.
+To uniformely capitalize each cell, use formula:
+```
+=UPPER(LEFT(A2,1))&LOWER(RIGHT(A2,LEN(A2)-1))
+```
+
+which capitalize the first letter of a cell and concatenate the rest of the cell
 
 ### Removing inconsistencies
 
