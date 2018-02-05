@@ -17,22 +17,25 @@ app.get("/", function(req, res){
         if(err){
             console.log(err)
         } else{
+            console.log(filteredDecisions);
          res.render("result", {decisions: filteredDecisions})
             }
         })
     }
     else{
         res.render("index");
-        // Decision.find({year: 2017}).limit(10).exec(function(err, foundDecisions){
-        //     if(err){
-        //         console.log(err);
-        //     }
-        //     else{
-                
-        //     }
-    // });
     }
 
+});
+
+app.get("/browse", function(req, res){
+    Decision.find({}).sort({year: "descending"}).exec(function(err, foundDecisions){
+        if(err){
+            console.log(err);
+        }else{
+            res.render("result", {decisions: foundDecisions});
+        }
+    })
 });
 
 app.get("/new", function(req, res){

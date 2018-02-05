@@ -7,9 +7,9 @@ var decisionSchema = new mongoose.Schema({
     para: String, 
     theme: [String],
     target: [String], 
-    text: String
+    decision_text: String
 });
 
-decisionSchema.index({"text": "text", "theme": "text" })
+decisionSchema.index({"decision_text": "text", "theme": "text" })
 
 module.exports = mongoose.model("Decision", decisionSchema);

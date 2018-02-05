@@ -38,3 +38,11 @@ a:hover{
     color: white;
     background: rgb(71, 71, 71);
 }
+
+.btn-success{
+    background: #24b57a;
+}
+
+.btn-success:hover{
+    background: #24b57a;
+}
